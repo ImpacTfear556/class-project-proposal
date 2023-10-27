@@ -1,88 +1,78 @@
-# Python Program to illustrate 
-# Hangman Game 
-import random 
-from collections import Counter 
+#importing the time module
+import time
 
-someWords = '''apple banana mango strawberry 
-orange grape pineapple apricot lemon coconut watermelon 
-cherry papaya berry peach lychee muskmelon'''
+#welcoming the user
+name = input("What is your name? ")
 
-someWords = someWords.split(' ') 
-# randomly choose a secret word from our "someWords" LIST. 
-word = random.choice(someWords) 
+print ("Hello, " + name, "Time to play hangman!")
 
-if __name__ == '__main__': 
-	print('Guess the word! HINT: word is a name of a fruit') 
+#wait for 1 second
+time.sleep(1)
 
-	for i in word: 
-		# For printing the empty spaces for letters of the word 
-		print('_', end=' ') 
-	print() 
+print ("Start guessing...")
+time.sleep(0.5)
 
-	playing = True
-	# list for storing the letters guessed by the player 
-	letterGuessed = '' 
-	chances = len(word) + 2
-	correct = 0
-	flag = 0
-	try: 
-		while (chances != 0) and flag == 0: # flag is updated when the word is correctly guessed 
-			print() 
-			chances -= 1
+#here we set the secret. You can select any word to play with. 
+word = ("secret")
 
-			try: 
-				guess = str(input('Enter a letter to guess: ')) 
-			except: 
-				print('Enter only a letter!') 
-				continue
+#creates an variable with an empty value
+guesses = ''
 
-			# Validation of the guess 
-			if not guess.isalpha(): 
-				print('Enter only a LETTER') 
-				continue
-			else if len(guess) & gt 
-			1: 
-				print('Enter only a SINGLE letter') 
-				continue
-			else if guess in letterGuessed: 
-				print('You have already guessed that letter') 
-				continue
+#determine the number of turns
+turns = 10
 
-			# If letter is guessed correctly 
-			if guess in word: 
-				# k stores the number of times the guessed letter occurs in the word 
-				k = word.count(guess) 
-				for _ in range(k): 
-					letterGuessed += guess # The guess letter is added as many times as it occurs 
+# Create a while loop
 
-			# Print the word 
-			for char in word: 
-				if char in letterGuessed and (Counter(letterGuessed) != Counter(word)): 
-					print(char, end=' ') 
-					correct += 1
-				# If user has guessed all the letters 
-				# Once the correct word is guessed fully, 
-				else if (Counter(letterGuessed) == Counter(word)): 
-																# the game ends, even if chances remain 
-					print(& quot 
-						The word is: & quot 
-						, end=' ') 
-					print(word) 
-					flag = 1
-					print('Congratulations, You won!') 
-					break # To break out of the for loop 
-					break # To break out of the while loop 
-				else: 
-					print('_', end=' ') 
+#check if the turns are more than zero
+while turns > 0:         
 
-		# If user has used all of his chances 
-		if chances & lt 
-		= 0 and (Counter(letterGuessed) != Counter(word)): 
-			print() 
-			print('You lost! Try again..') 
-			print('The word was {}'.format(word)) 
+    # make a counter that starts with zero
+    failed = 0             
 
-	except KeyboardInterrupt: 
-		print() 
-		print('Bye! Try again.') 
-		exit() 
+    # for every character in secret_word    
+    for char in word:      
+
+    # see if the character is in the players guess
+        if char in guesses:    
+    
+        # print then out the character
+            print (char,end=""),    
+
+        else:
+    
+        # if not found, print a dash
+            print ("_",end=""),     
+       
+        # and increase the failed counter with one
+            failed += 1    
+
+    # if failed is equal to zero
+
+    # print You Won
+    if failed == 0:        
+        print ("You won")
+    # exit the script
+        break            
+    # ask the user go guess a character
+    guess = input("guess a character:") 
+
+    # set the players guess to guesses
+    guesses += guess                    
+
+    # if the guess is not found in the secret word
+    if guess not in word:  
+ 
+     # turns counter decreases with 1 (now 9)
+        turns -= 1        
+ 
+    # print wrong
+        print ("Wrong")  
+ 
+    # how many turns are left
+        print ("You have", + turns, 'more guesses' )
+ 
+    # if the turns are equal to zero
+        if turns == 0:           
+    
+        # print "You Lose"
+            print ("You Lose"  )
