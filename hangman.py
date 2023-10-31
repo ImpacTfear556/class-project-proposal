@@ -156,7 +156,7 @@ if __name__ == "__main__":
 	# Words in each category
 	dataset = {"DC characters":["SUPERMAN", "JOKER", "HARLEY QUINN", "GREEN LANTERN", "FLASH", "WONDER WOMAN", "AQUAMAN", "MARTIAN MANHUNTER", "BATMAN"],\
 				 "Marvel characters":["CAPTAIN AMERICA", "IRON MAN", "THANOS", "HAWKEYE", "BLACK PANTHER", "BLACK WIDOW"],
-				 "Video Game characters":["Kratos", "Ellie", "Master Chief", "Arthur Morgan"]
+				 "Video Game characters":["KRATOS", "ELLIE", "MASTER CHIEF", "ARTHUR MORGAN","NATHAN DRAKE","MARIO","DOOMSLAYER"]
 				 }
 	
 	# The GAME LOOP
